@@ -1,0 +1,30 @@
+{
+  "name": "vimsurf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "lint": "eslint src --ext .ts,.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/chrome": "^0.0.328",
+    "@types/mousetrap": "^1.6.15",
+    "@types/webextension-polyfill": "^0.12.3",
+    "copy-webpack-plugin": "^13.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "mousetrap": "^1.6.5",
+    "webextension-polyfill": "^0.12.0",
+    "xstate": "^5.20.0"
+  }
+}
