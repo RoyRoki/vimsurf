@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("Vimsurf background service worker loaded")})();
+(()=>{"use strict";chrome.runtime.onMessage.addListener((e,a)=>{var r,t;switch(e.type){case"openTab":chrome.tabs.create({url:e.url,active:null===(r=e.active)||void 0===r||r});break;case"reloadTab":void 0!==(null===(t=a.tab)||void 0===t?void 0:t.id)&&chrome.tabs.reload(a.tab.id)}})})();

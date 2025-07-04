@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/chrome": "^0.0.328",
     "@types/mousetrap": "^1.6.15",
+    "@types/pako": "^2.0.3",
     "@types/webextension-polyfill": "^0.12.3",
     "copy-webpack-plugin": "^13.0.0",
     "ts-loader": "^9.5.2",
@@ -23,7 +24,9 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "mousetrap": "^1.6.5",
+    "pako": "^2.1.0",
     "webextension-polyfill": "^0.12.0",
     "xstate": "^5.20.0"
   }

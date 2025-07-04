@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vimsurf Plugin Manifest",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "commands"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "modes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "normal",
+          "insert",
+          "visual",
+          "operator-pending"
+        ]
+      }
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "action"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "args": {
+            "type": "object"
+          },
+          "modes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "slot": {
+          "enum": [
+            "overlay",
+            "sidebar",
+            "toolbar",
+            "statusbar"
+          ]
+        },
+        "trigger": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

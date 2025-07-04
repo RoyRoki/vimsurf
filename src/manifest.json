@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Vimsurf",
   "version": "0.1.0",
-  "description": "Vim-style browsing with hjkl scrolling",
+  "description": "Vim-style browsing With Vimsurf",
   "permissions": [
     "storage",
     "scripting",

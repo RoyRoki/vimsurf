@@ -1,0 +1,27 @@
+{
+  "name": "defaultScroll",
+  "version": "0.1.0",
+  "priority": 1,
+  "commands": [
+    {
+      "key": "j",
+      "action": "scroll",
+      "args": {
+        "amount": 40
+      },
+      "modes": [
+        "normal"
+      ]
+    },
+    {
+      "key": "k",
+      "action": "scroll",
+      "args": {
+        "amount": -40
+      },
+      "modes": [
+        "normal"
+      ]
+    }
+  ]
+}

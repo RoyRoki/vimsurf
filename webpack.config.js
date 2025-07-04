@@ -1,13 +1,12 @@
-
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: {
-    background: "./src/background.ts",
-    content: "./src/content.ts",
-    options: "./src/options/options.ts",
+    background: "./src/celery/background.ts",
+    content: "./src/extension/content.ts",
+    options: "./src/ui/options.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -15,6 +14,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js"],
+    alias: {
+      // Move alias under resolve
+      extension: path.resolve(__dirname, 'src/extension/')
+    },
   },
   module: {
     rules: [
@@ -23,6 +26,10 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.json$/,
+        type: 'json'
+      }
     ],
   },
   plugins: [
@@ -31,7 +38,7 @@ module.exports = {
         // Copy manifest.json into dist/
         { from: "src/manifest.json", to: "manifest.json" },
         // Copy the options page HTML
-        { from: "src/options/options.html", to: "options.html" },
+        { from: "src/ui/options.html", to: "options.html" },
         // Copy all assets (icons, etc.)
         { from: "src/assets", to: "assets" },
       ],
