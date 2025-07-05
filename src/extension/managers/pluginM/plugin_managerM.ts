@@ -1,12 +1,13 @@
 import Mousetrap from 'mousetrap';
-import { AppConstants } from '../constants/AppConstants';
-import { ConflictEntry } from '../interfaces/conflictEntryI';
-import { NamedActionMaps } from '../interfaces/named_action_maps';
-import PluginManifest from '../interfaces/pluginManifestI';
-import { getCurrentMode } from '../services/mode_switching_service';
-import { findConflicts } from '../utils/conflict';
-import { flattenActionMaps } from '../utils/flatten_action_maps';
-import { validatePlugins } from '../utils/validate_plugins';
+import { AppConstants } from '../../constants/AppConstants';
+import { ConflictEntry } from '../../interfaces/conflictEntryI';
+import PluginManifest from '../../interfaces/pluginManifestI';
+import { getCurrentMode } from '../../services/mode_switching_service';
+import { findConflicts } from '../../utils/conflict';
+import { flattenActionMaps } from '../../utils/flatten_action_maps';
+import { validatePlugins } from '../../utils/validate_plugins';
+import defaultPlugin from '../../../plugins/default.json'
+import { NamedActionMaps } from 'extension/interfaces/named_action_mapsI';
 
 export class PluginManager {
   private manifests: PluginManifest[] = [];
@@ -81,21 +82,35 @@ export class PluginManager {
     });
   }
 
-  /** Fetch built-in plugin JSONs */
+
   private async loadBuiltIn(): Promise<PluginManifest[]> {
-    const files = [...AppConstants.buildInPlugins];
-    const out: PluginManifest[] = [];
-    for (const f of files) {
-      try {
-        const url = chrome.runtime.getURL(`../../plugins/${f}`);
-        const json = await fetch(url).then(r => r.json());
-        out.push(json as PluginManifest);
-      } catch (e) {
-        console.warn(`[PluginManager] Failed to load built-in plugin ${f}`, e);
-      }
+    try {
+      // Webpack context for .json files in src/extension/plugins
+      const context = (require as any).context(
+        '../../../plugins',   // <-- make sure this matches the on-disk path
+        false,
+        /\.json$/
+      );
+
+      const keys = context.keys();
+      console.debug('[PluginManager] Discovered plugin files:', keys);
+
+      const manifests = keys.map((key: string) => {
+        const mod = context(key);
+        console.debug(`[PluginManager] Loaded plugin module for ${key}:`, mod);
+        return mod as PluginManifest;
+      });
+
+      return manifests;
+    } catch (err) {
+      console.warn(
+        '[PluginManager] Failed to load built-in plugins via context',
+        err
+      );
+      return [];
     }
-    return out;
   }
+
 
   /** Load user-installed plugin manifests from storage */
   private loadUser(): Promise<PluginManifest[]> {

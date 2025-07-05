@@ -1,10 +1,9 @@
-import { NamedActionMaps } from "extension/interfaces/named_action_maps";
-import { scrollActions } from "./scrollActions";
+import { PluginActionMap } from "extension/interfaces/named_action_mapsI";
+import { scrollActions } from "./scroll/scrollActions";
 
-const coreActions = {
-  scroll: scrollActions,
+export default function getCoreActions(): PluginActionMap {
+  return {
+    ...scrollActions,
+  }
 }
 
-export default function getCoreActions(): NamedActionMaps {
-  return coreActions;
-}

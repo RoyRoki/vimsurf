@@ -1,4 +1,4 @@
-import { NamedActionMaps } from "extension/interfaces/named_action_maps";
+import { NamedActionMaps } from "extension/interfaces/named_action_mapsI";
 
 export function flattenActionMaps(named: NamedActionMaps): Record<string, Function> {
   return Object.entries(named).reduce((acc, [ns, map]) => {

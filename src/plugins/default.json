@@ -5,7 +5,7 @@
   "commands": [
     {
       "key": "j",
-      "action": "scroll",
+      "action": "core.scroll",
       "args": {
         "amount": 40
       },
@@ -15,7 +15,7 @@
     },
     {
       "key": "k",
-      "action": "scroll",
+      "action": "core.scroll",
       "args": {
         "amount": -40
       },

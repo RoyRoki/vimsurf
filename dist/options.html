@@ -3,15 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Vimsurf Options</title>
+  <title>Vimsurf Settings</title>
 </head>
 
 <body>
-  <h1>Vimsurf Plugins</h1>
-  <input type="file" id="upload" accept="application/json" />
-  <button id="install">Install</button>
-  <h2>Installed Plugins</h2>
-  <ul id="plugin-list"></ul>
+  <h1>Vimsurf Settings</h1>
+
+  <div>
+    <label for="scroll-step">Scroll Step (px):</label>
+    <input type="number" id="scroll-step" min="0" max="1000" />
+    <button id="save">Save</button>
+  </div>
+
+  <p id="status"></p>
+
   <script src="options.js"></script>
 </body>
 

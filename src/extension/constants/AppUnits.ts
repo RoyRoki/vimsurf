@@ -1,3 +1,3 @@
-enum AppUnits {
-  scrollAmount = 40,
-}
+export const AppUnits = {
+  scrollAmount: 40,
+};

@@ -1,5 +1,5 @@
-enum Modes {
-  Normal = 'normal',
-  Insert = 'insert',
-  Visual = 'visual',
+export const Modes = {
+  Normal: 'normal',
+  Insert: 'insert',
+  Visual: 'visual',
 }
