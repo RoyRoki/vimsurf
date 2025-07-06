@@ -1,7 +1,7 @@
-import { PluginManager } from "extension/managers/plugin/plugin_managerM";
-import { initModeService } from "../services/mode_switching_service";
-import { initScrollService } from "../services/scroll_service";
 import getAppActions from "extension/actions/appActions";
+import { PluginManager } from "extension/managers/pluginM/plugin_managerM";
+import { initModeService } from "extension/services/mode_switching_service";
+import { initScrollService } from "extension/services/scroll_service";
 
 // This Funtion start the applicaiton
 export default function AppInit() {

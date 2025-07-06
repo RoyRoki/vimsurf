@@ -26,5 +26,10 @@ saveBtn.addEventListener('click', () => {
     statusEl.textContent = 'Saved!';
     setTimeout(() => (statusEl.textContent = ''), 2000);
   });
+  chrome.storage.sync.get(LocalKeys.scrollAmount, data => {
+    if (typeof data.scrollAmount === "number" && validateScrollAmount(data.scrollAmount)) {
+      console.debug(data.scrollAmount);
+    }
+  });
 });
 

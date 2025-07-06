@@ -6,7 +6,6 @@ import { getCurrentMode } from '../../services/mode_switching_service';
 import { findConflicts } from '../../utils/conflict';
 import { flattenActionMaps } from '../../utils/flatten_action_maps';
 import { validatePlugins } from '../../utils/validate_plugins';
-import defaultPlugin from '../../../plugins/default.json'
 import { NamedActionMaps } from 'extension/interfaces/named_action_mapsI';
 
 export class PluginManager {
@@ -85,9 +84,8 @@ export class PluginManager {
 
   private async loadBuiltIn(): Promise<PluginManifest[]> {
     try {
-      // Webpack context for .json files in src/extension/plugins
       const context = (require as any).context(
-        '../../../plugins',   // <-- make sure this matches the on-disk path
+        '../../../plugins',
         false,
         /\.json$/
       );
@@ -112,7 +110,6 @@ export class PluginManager {
   }
 
 
-  /** Load user-installed plugin manifests from storage */
   private loadUser(): Promise<PluginManifest[]> {
     return new Promise(resolve => {
       chrome.storage.sync.get(AppConstants.userPluginsKey, data => {
