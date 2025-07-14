@@ -1,0 +1,17 @@
+{
+  "name": "extendedKeys",
+  "version": "0.1.0",
+  "priority": 1,
+  "commands": [
+    {
+      "key": "y",
+      "action": "core.copyHighlightOrVisual",
+      "modes": ["normal", "visual"]
+    },
+    {
+      "key": "p",
+      "action": "core.pasteCopiedElement",
+      "modes": ["normal"]
+    }
+  ]
+}

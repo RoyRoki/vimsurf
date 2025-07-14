@@ -21,6 +21,11 @@ export class AppDom {
       console.warn('AppDom: cannot appendChild—root is not an HTMLElement');
     }
   }
+  public queryAll<T extends Element = Element>(selector: string): T[] {
+  if (!this.dom) return [];
+  return Array.from((this.dom as Document | Element).querySelectorAll<T>(selector));
+}
+
 }
 
 export const appDom = new AppDom();

@@ -1,0 +1,22 @@
+{
+  "name": "modeSwitch",
+  "version": "0.1.0",
+  "priority": 1,
+  "commands": [
+    {
+      "key": "i",
+      "action": "core.enterInsertMode",
+      "modes": ["normal"]
+    },
+    {
+      "key": "v",
+      "action": "core.enterVisualMode",
+      "modes": ["normal"]
+    },
+    {
+      "key": "Escape",
+      "action": "core.enterNormalMode",
+      "modes": ["insert", "visual"]
+    }
+  ]
+}

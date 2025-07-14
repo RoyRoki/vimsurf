@@ -3,25 +3,11 @@
   "version": "0.1.0",
   "priority": 1,
   "commands": [
-    {
-      "key": "j",
-      "action": "core.scroll",
-      "args": {
-        "amount": 40
-      },
-      "modes": [
-        "normal"
-      ]
-    },
-    {
-      "key": "k",
-      "action": "core.scroll",
-      "args": {
-        "amount": -40
-      },
-      "modes": [
-        "normal"
-      ]
-    }
+    { "key": "j", "action": "core.moveDown", "modes": ["normal", "visual"] },
+    { "key": "k", "action": "core.moveUp", "modes": ["normal", "visual"] },
+    { "key": "h", "action": "core.moveLeft", "modes": ["normal", "visual"] },
+    { "key": "l", "action": "core.moveRight", "modes": ["normal", "visual"] },
+    { "key": "z", "action": "core.moveZTop", "modes": ["normal", "visual"] },
+    { "key": "Z", "action": "core.moveZDown", "modes": ["normal", "visual"] }
   ]
 }
